@@ -1,16 +1,18 @@
-// Smooth scrolling or simple interactions
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Portfolio Loaded!");
-
-    // Example: Change nav background on scroll
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.style.background = '#000';
-            nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
-        } else {
-            nav.style.background = 'transparent';
-            nav.style.boxShadow = 'none';
+// Simple scroll animation
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
         }
     });
+});
+
+// Initial state for animation
+document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'all 0.6s ease-out';
 });
